@@ -1,0 +1,60 @@
+
+<?php
+include 'top.php'; 
+include 'connect.php';
+?>
+
+<div class="content pb-0">
+            <div class="orders">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="card">
+                        <div class="card-body">
+                           <h4 class="box-title">Orders </h4>
+                        </div>
+                        <div class="card-body--">
+                           <div class="table-stats order-table ov-h">
+                              <table class="table ">
+                                 <thead>
+                                     <tr>
+                                      <th>ID</th>
+                                       <th>Name</th>
+                                       <th>Photo</th>
+                                       <th>Position</th>
+                                       <th>Phone Number</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                  <?php 
+$select_query="SELECT * FROM staff_details";
+$run=mysqli_query($connect,$select_query);
+while($fetch=mysqli_fetch_assoc($run))
+{
+echo "
+<tr>
+      <th scope='row'>".$fetch['staff_id']." </th>
+      <td>".$fetch['staff_name']." </td>
+      <td><img src=".  $fetch['photo']." style='width:50px;height:50px;' ></td>
+      <td> ".$fetch['position']." </td>
+      <td>". $fetch['description']."</td>
+    </tr>";
+    } ?>
+                                   <!--  <tr>
+                                      
+                                       <td> #5469 </td>
+                                       <td> <span class="name">Louis Stanley</span> </td>
+                                       <td> <span class="product">iMax</span> </td>
+                                       <td><span class="count">231</span></td>
+                                       <td>
+                                          <span class="badge badge-complete">Complete</span>
+                                       </td>
+                                    </tr> -->
+
+<!-- end -->
+
+
+
+ <?php
+
+include('footer.php');
+?>
